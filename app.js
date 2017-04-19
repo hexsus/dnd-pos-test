@@ -52,7 +52,7 @@ function changePosition() {
 
 
     items.forEach(function (item) {
-        item.addEventListener('mousedown', function (e) {
+        document.body.addEventListener('mousedown', function (e) {
             e.preventDefault();
             selectedItem = e.target;
             clone = selectedItem.cloneNode(true);
@@ -61,7 +61,7 @@ function changePosition() {
             document.getElementById('data-container').appendChild(clone);
         }, false);
 
-        item.addEventListener('mousemove', function (e) {
+        document.body.addEventListener('mousemove', function (e) {
             if (clone) {
                 cursorPosition.left = e.clientX;
                 cursorPosition.top = e.pageY;
@@ -72,9 +72,8 @@ function changePosition() {
             }
         }, false);
 
-        item.addEventListener('mouseover', function (e) {
+        document.body.addEventListener('mouseover', function (e) {
             if (clone) {
-                console.log(e.clientX, e.clientY);
                 if (e.clientY < 60) {
                     insertBefore(selectedItem, document.elementFromPoint(e.clientX, e.clientY))
                 }
@@ -82,7 +81,7 @@ function changePosition() {
             }
         });
 
-        item.addEventListener('mouseup', function (e) {
+        document.body.addEventListener('mouseup', function (e) {
             if (clone) {
                 document.getElementById('data-container').removeChild(clone);
                 item.classList.remove('new');
