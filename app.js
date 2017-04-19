@@ -74,6 +74,7 @@ function changePosition() {
 
         item.addEventListener('mouseover', function (e) {
             if (clone) {
+                console.log(e.clientX, e.clientY);
                 if (e.clientY < 60) {
                     insertBefore(selectedItem, document.elementFromPoint(e.clientX, e.clientY))
                 }
